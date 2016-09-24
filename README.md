@@ -100,3 +100,42 @@ module.exports = {
 上一篇文章 里是使用 webpack 进行 ES6 开发，其实不管是 ES6 也好，React 也好，webpack 起到的是一个打包器的作用，配置项和这里大致相似，就不再赘述。
 
 不同的是在 babel-loader 里增加了 react 的转码规则。
+
+
+## Couldn't find preset "react" relative to directory
+
+### 方式一(不推荐)
+```
+#npm remove babel-core babel-loader babel-preset-react –save-dev
+//首先移除原先安装的babel
+#npm install babel-core babel-loader babel-preset-react –g
+//全局安装
+```
+
+### 方式二(不推荐)
+```
+# npm remove webpack –g
+//移除原先的webpack
+# npm install webpack –save-dev
+//将webpack安装到本地位置——也就是项目目录下的node_modules中
+# ln –s /项目根目录/node_modules/webpack/bin/webpack.js /usr/bin/webpack
+//为了使用webpack方便，在这里我们在/usr/bin目录下建立软连接（也就是快捷方式）
+//这样我们就可以在任意位置直接使用webpack命令了。
+```
+
+### 方式三(推荐)
+
+```
+module:{
+loaders: [
+	{
+	test: /\.js$/,
+	loader: 'babel',
+	exclude:/node_modules/,
+	query:{
+		presets:['react']}
+	}
+]
+
+}
+```

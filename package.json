@@ -8,6 +8,12 @@
     "build": "webpack",
     "dev": "webpack-dev-server --devtool eval --progress --colors --content-base build"
   },
+  "babel": {
+	"presets": [
+	"es2015",
+	"react"
+	]
+  },
   "keywords": [
     "stu"
   ],

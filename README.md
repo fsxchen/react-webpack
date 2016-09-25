@@ -139,3 +139,16 @@ loaders: [
 
 }
 ```
+
+## Couldn't find preset "es2015" relative to directory
+
+解决方案，在`package.conf`中加入
+```
+"babel": {
+	"presets": [
+	"es2015",
+	"react"
+	]
+},
+
+```
